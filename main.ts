@@ -1690,7 +1690,7 @@ namespace kitronik_smart_greenhouse {
      * Read data at selected position in the stored data.
      * If entered position is greater than the total number of enteries, the max entry position is outputted.
      * @param position is the row location of the required data
-     * @param column is the column containing the specific piece of data
+     * @param column is the column containing the specific piece of data eg: 1
      */
     //% subcategory="Data Logging"
     //% group=Analyse
@@ -1720,6 +1720,34 @@ namespace kitronik_smart_greenhouse {
     export function returnTotalEntries(): number {
         let totalEntries = storedList.length
         return totalEntries
+    }
+
+    /**
+     * Return the total number of data columns.
+     */
+    //% subcategory="Data Logging"
+    //% group=Analyse
+    //% weight=50 blockGap=8
+    //% blockId=kitronik_smart_greenhouse_total_columns
+    //% block="total number of columns"
+    export function returnTotalColumns(): number {
+        let totalColumns = math.floor(titleBuild.length/10)
+        return totalColumns
+    }
+
+    /**
+     * Read each column heading title.
+     * @param column is the column containing the specific piece of data eg: 1
+     */
+    //% subcategory="Data Logging"
+    //% group=Analyse
+    //% weight=55 blockGap=8
+    //% blockId=kitronik_smart_greenhouse_read_title
+    //% block="read title at column %column"
+    export function readTitles(column: number): string {
+        let singleTitle = titleBuild.substr(((column*10)-11+column), 10) // Just fetch the 10 characters of that entry's column, works for all separators
+        
+        return singleTitle
     }
 
 } 
