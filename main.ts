@@ -1731,7 +1731,7 @@ namespace kitronik_smart_greenhouse {
     //% blockId=kitronik_smart_greenhouse_total_columns
     //% block="total number of columns"
     export function returnTotalColumns(): number {
-        let totalColumns = math.floor(titleBuild.length/10)
+        let totalColumns = Math.floor(titleBuild.length/10)
         return totalColumns
     }
 
